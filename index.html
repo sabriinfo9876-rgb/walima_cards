@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fbf5ec">
+<title>Atif &amp; Noreen — Walima Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fbf5ec;--blush:#f4d4da;--rose:#9c3f58;--gold:#b8892f;--gold2:#e2c36f;--green:#2f5d46;--ink:#3b2a2e}
+*{box-sizing:border-box;margin:0;padding:0}
+html{min-height:100%;background:#f4ebe0;scroll-behavior:smooth}
+body{background:radial-gradient(circle at 50% 0,#fffdf8,var(--cream) 55%,#f6e6e3);color:var(--ink);font:300 13.5px/1.8 'Jost',sans-serif;text-align:center;overflow-x:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+body.lock{overflow:hidden;height:100dvh}
+.paper-grain{position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")}
+#fx-canvas{position:fixed;inset:0;pointer-events:none;z-index:2}
+.sc{font-family:'Pinyon Script',cursive;font-weight:400}
+.sr{font-family:'Cormorant Garamond',serif}
+.cz{font-family:'Cinzel',serif;letter-spacing:.25em;text-transform:uppercase}
+/* padding added so the swash of letters like "d" is no longer clipped */
+.gold-foil{background:linear-gradient(135deg,#9d6f1a 0%,#d4a034 25%,#845507 50%,#c9932a 75%,#9d6f1a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:220% auto;animation:shineFoil 4.5s linear infinite;display:inline-block;padding:0 .14em .1em;filter:drop-shadow(0 1px 1.5px rgba(59,42,46,.15))}
+@keyframes shineFoil{0%{background-position:0% center}100%{background-position:220% center}}
+
+/* 1. OPENING SCENE */
+#open{position:fixed;inset:0;z-index:300;background:radial-gradient(circle at 50% 40%,#fffdf8,var(--cream) 60%,#f6e0e0);display:flex;flex-direction:column;align-items:center;justify-content:safe center;overflow-y:auto;padding:calc(24px + env(safe-area-inset-top,0px)) 20px calc(24px + env(safe-area-inset-bottom,0px));transition:opacity 1s cubic-bezier(.4,0,.2,1),visibility 1s}
+#open.unfolded{opacity:0;visibility:hidden;pointer-events:none}
+.bismillah-title{font-family:'Cormorant Garamond',serif;font-size:25px;color:var(--gold);letter-spacing:.08em;margin-bottom:12px;opacity:0;animation:fadeUp 1.2s .2s forwards}
+#open .pre-title{font:500 9.5px 'Jost',sans-serif;letter-spacing:.36em;color:#6b5558;text-transform:uppercase;margin-bottom:38px;opacity:0;animation:fadeUp 1.2s .4s forwards}
+#open h1{font-size:clamp(44px,12.5vw,66px);color:var(--ink);line-height:1.25;margin:0 0 64px;opacity:0;filter:blur(8px);animation:blurIn 1.6s .6s forwards}
+#open h1 .amp{font-size:.85em;margin:0 10px;color:var(--gold)}
+#open .click-hint{margin-top:38px;font:500 9px 'Jost',sans-serif;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;opacity:0;animation:fadeUp 1.2s 2s forwards,pulseHint 2.2s 2.8s infinite ease-in-out}
+@keyframes pulseHint{0%,100%{transform:translateY(0);opacity:.8}50%{transform:translateY(-4px);opacity:1}}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes blurIn{to{opacity:1;filter:none}}
+
+.envelope-box{perspective:1200px;width:min(78vw,310px);aspect-ratio:1.42;flex-shrink:0;cursor:pointer;opacity:0;animation:envDrop 1.4s 1s cubic-bezier(.16,1,.3,1) forwards}
+.envelope-box:focus-visible{outline:2px solid var(--gold);outline-offset:8px}
+@keyframes envDrop{from{opacity:0;transform:translateY(60px) rotateX(15deg) rotateZ(-3deg)}to{opacity:1;transform:translateY(0) rotateX(0) rotateZ(-1.5deg)}}
+.env-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 22px 28px rgba(120,60,70,.26))}
+.envelope-box:hover .env-inner{transform:translateY(-8px) rotateX(6deg)}
+.eb{position:absolute;inset:0;background:#e9b3be;border-radius:4px}
+.el{position:absolute;left:4%;right:4%;top:3%;bottom:6%;background:var(--cream) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23b8892f' stroke-width='.5'%3E%3Crect x='6' y='6' width='12' height='12' transform='rotate(45 12 12)'/%3E%3C/svg%3E");opacity:0;border-radius:2px;transition:opacity .4s .3s}
+.ef{position:absolute;inset:0;background:#f2c7d0;clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);border-radius:0 0 4px 4px;z-index:4}
+.fp{position:absolute;left:0;top:0;width:100%;height:60%;background:#efbdc8;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform 1s cubic-bezier(.4,0,.1,1),background .8s;z-index:5}
+
+/* WAX SEAL — "A & N" now sits inside the stamp, centred, with room around it */
+.seal{position:absolute;left:50%;top:58%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffea9f,var(--gold) 70%,#7d540f 100%);border:1.5px solid var(--gold2);box-shadow:0 6px 16px rgba(120,60,70,.28),inset 0 0 0 2px rgba(255,255,255,.45);overflow:hidden;z-index:6;cursor:pointer;transition:transform .6s cubic-bezier(.3,1.5,.5,1),opacity .5s;animation:sealPulse 2.4s infinite ease-in-out}
+.seal svg{display:block;width:100%;height:100%}
+@keyframes sealPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.tw{position:absolute;right:-12%;bottom:-16%;width:36%;z-index:7;pointer-events:none;filter:drop-shadow(0 6px 8px rgba(120,60,70,.2))}
+#open.opening .fp{transform:rotateX(180deg);background:#e5a9b6;z-index:1}
+#open.opening .el{opacity:1}
+#open.opening .seal{transform:scale(2.2);opacity:0;animation:none}
+#open.opening .bismillah-title,#open.opening .pre-title,#open.opening h1,#open.opening .click-hint{opacity:0!important;transition:opacity .5s ease}
+
+/* 2. MAIN SUITE */
+.invitation-suite{max-width:450px;margin:0 auto;padding:calc(34px + env(safe-area-inset-top,0px)) 18px calc(70px + env(safe-area-inset-bottom,0px));opacity:0;transform:translateY(30px);transition:opacity 1s .2s cubic-bezier(.16,1,.3,1),transform 1s .2s cubic-bezier(.16,1,.3,1);position:relative;z-index:10}
+.revealed .invitation-suite{opacity:1;transform:translateY(0)}
+.royal-card{background:#fff;border:1px solid rgba(184,137,47,.35);border-radius:16px;padding:32px 22px;margin-bottom:24px;position:relative;box-shadow:0 14px 34px -10px rgba(120,60,70,.12),0 4px 12px rgba(80,40,50,.04)}
+.royal-card::before{content:"";position:absolute;inset:6px;border:1px dashed rgba(226,195,111,.5);border-radius:12px;pointer-events:none}
+.quran-verse{font-family:'Cormorant Garamond',serif;font-size:18.5px;line-height:1.8;color:var(--ink);margin:14px 0 8px}
+.quran-ref{font:500 8.5px 'Jost',sans-serif;letter-spacing:.25em;color:var(--gold)}
+.couple-names-wrap{margin:18px 0}
+.couple-name{font-size:clamp(48px,14vw,68px);line-height:1;display:block}
+.couple-amp{font-size:30px;color:var(--gold);display:block;margin:-4px 0}
+.countdown-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:20px 0 8px}
+.countdown-box{background:var(--cream);border:1px solid #ebd9c5;border-radius:8px;padding:12px 4px}
+.cd-num{font-family:'Jost',sans-serif;font-weight:500;font-size:22px;color:var(--rose);line-height:1}
+.cd-label{font:500 8px 'Jost',sans-serif;letter-spacing:.18em;color:#6b5558;margin-top:4px}
+.timeline-list{margin:22px 0 8px;text-align:left}
+.tl-item{display:flex;align-items:center;gap:16px;margin-bottom:20px;position:relative}
+.tl-item:not(:last-child)::after{content:"";position:absolute;left:21px;top:42px;bottom:-20px;width:1px;background:#f0ccd5}
+.tl-badge{width:44px;height:44px;border-radius:50%;background:var(--cream);border:1px solid #e2c36f;display:grid;place-items:center;color:var(--rose);flex-shrink:0}
+.tl-time{font:500 10px 'Jost',sans-serif;letter-spacing:.18em;color:var(--rose)}
+.tl-title{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--ink);line-height:1.25}
+.bt-luxury{display:inline-flex;align-items:center;justify-content:center;padding:13px 26px;background:var(--green);color:#f6ecd0;text-decoration:none;font:500 9px 'Jost',sans-serif;letter-spacing:.3em;text-transform:uppercase;border-radius:2px;box-shadow:0 6px 18px rgba(47,93,70,.28);transition:transform .25s,background .25s;cursor:pointer;border:none;min-height:46px}
+.bt-luxury:hover{background:#244735;transform:translateY(-2px)}
+.bt-secondary{background:var(--cream);color:var(--ink);border:1px solid var(--gold);box-shadow:none}
+.bt-secondary:hover{background:#fdf5ea}
+.swatch-row{display:flex;justify-content:center;gap:12px;margin:18px 0 10px}
+.palette-dot{width:36px;height:36px;border-radius:50%;box-shadow:0 4px 10px rgba(0,0,0,.12),inset 0 0 0 2px rgba(255,255,255,.7);transition:transform .3s}
+.palette-dot:hover{transform:scale(1.15)}
+.rsvp-card-box{background:var(--cream);border:1px solid #ebd9c5;border-radius:12px;padding:22px 18px;margin-top:16px;text-align:left}
+.rsvp-form-row{margin-bottom:14px}
+.rsvp-form-label{display:block;font:500 9px 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#6b5558;margin-bottom:5px}
+.rsvp-form-input,.rsvp-form-select{width:100%;padding:12px 14px;background:#fff;border:1px solid #dfcfbc;border-radius:4px;font:400 13px 'Jost',sans-serif;color:var(--ink);outline:none;min-height:46px}
+.rsvp-form-input:focus,.rsvp-form-select:focus{border-color:var(--gold)}
+.rsvp-form-input.need{border-color:var(--rose)}
+.animate-reveal{opacity:0;transform:translateY(22px);transition:opacity .85s cubic-bezier(.2,1,.3,1),transform .85s cubic-bezier(.2,1,.3,1)}
+.animate-reveal.active{opacity:1;transform:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body class="lock">
+
+<div class="paper-grain"></div>
+<canvas id="fx-canvas"></canvas>
+
+<div id="open">
+  <p class="bismillah-title">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+  <p class="pre-title">YOU HAVE MAIL FROM</p>
+  <h1 class="sc gold-foil">Atif <span class="amp">&amp;</span> Noreen</h1>
+
+  <div class="envelope-box" id="envTrigger" role="button" tabindex="0" aria-label="Open the invitation">
+    <div class="env-inner">
+      <div class="eb"></div>
+      <div class="el"></div>
+      <div class="fp"></div>
+      <div class="ef"></div>
+      <div class="seal" id="sealBtn" aria-hidden="true">
+        <svg viewBox="0 0 68 68">
+          <circle cx="34" cy="34" r="29" fill="none" stroke="#7d540f" stroke-width=".8" opacity=".55"/>
+          <circle cx="34" cy="34" r="26.5" fill="none" stroke="#fff3c4" stroke-width=".6" stroke-dasharray="1.6 2.2" opacity=".75"/>
+          <text id="sealTxt" x="20" y="41" text-anchor="start" font-family="'Pinyon Script',cursive" font-size="19" fill="#3d1f04" style="filter:drop-shadow(0 .7px 0 rgba(255,244,200,.85))">A &amp; N</text>
+        </svg>
+      </div>
+      <svg class="tw" viewBox="0 0 70 70" fill="none" stroke-linecap="round">
+        <path d="M4 8C20 24 34 36 54 48" stroke="#e2c36f" stroke-width="1.2"/>
+        <path d="M18 34C30 40 42 44 60 52M24 28C34 40 44 46 62 50" stroke="#2f5d46" stroke-width="1"/>
+        <g fill="#fffdf8" stroke="#d6dec8" stroke-width=".5"><circle cx="46" cy="44" r="3.2"/><circle cx="52" cy="48" r="3.4"/><circle cx="58" cy="52" r="3"/><circle cx="50" cy="40" r="2.6"/></g>
+      </svg>
+    </div>
+  </div>
+
+  <p class="click-hint">CLICK ENVELOPE TO OPEN</p>
+</div>
+
+<div class="invitation-suite" id="mainSuite">
+
+  <section class="royal-card animate-reveal">
+    <svg viewBox="0 0 100 100" width="52" height="52" style="color:var(--gold);display:block;margin:0 auto 10px;">
+      <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3,3"/>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="0.8"/>
+      <path d="M36 50 Q 50 34 64 50 Q 50 66 36 50 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+    </svg>
+    <p class="bismillah-title" style="font-size:25px;margin-bottom:8px;">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+    <p class="cz" style="font-size:8px;color:#6b5558;">IN THE NAME OF ALLAH, THE MOST GRACIOUS, THE MOST MERCIFUL</p>
+    <p class="quran-verse">“And among His signs is that He created for you spouses from among yourselves so that you may find tranquility in them; and He placed between you affection and mercy.”</p>
+    <p class="quran-ref">— SŪRAH AR-RŪM (30:21)</p>
+  </section>
+
+  <section class="royal-card animate-reveal">
+    <p class="cz" style="font-size:8.5px;color:var(--gold);">UNDER THE AUSPICIOUS BLESSINGS OF</p>
+    <p style="font-size:14px;color:var(--ink);margin:12px 0 8px;line-height:1.8;">
+      <strong>Mr. Kazim Ali</strong> &amp; <strong>Mrs. Robina Khan</strong><br>
+      request the pleasure of your company to celebrate the Walima Ceremony of their beloved son
+    </p>
+    <div class="couple-names-wrap">
+      <span class="sc couple-name gold-foil">Atif</span>
+      <span class="sc couple-amp">&amp;</span>
+      <span class="sc couple-name gold-foil">Noreen</span>
+    </div>
+    <p style="font-size:14px;color:var(--ink);line-height:1.8;">
+      Daughter of<br>
+      <strong>Mr. Nawaz Chauhan</strong> &amp; <strong>Mrs. Ishrat Chauhan</strong>
+    </p>
+    <div style="width:50px;height:1px;background:#e2c36f;margin:22px auto;"></div>
+    <p class="sr" style="font-size:18.5px;font-style:italic;color:var(--rose);">“Barakallahu laka wa baraka 'alaykuma wa jama'a baynakuma fee khayr.”</p>
+  </section>
+
+  <section class="royal-card animate-reveal">
+    <p class="cz" style="font-size:8.5px;color:var(--rose);">THE COUNTDOWN TO CELEBRATION</p>
+    <p class="sr" style="font-size:23px;font-weight:600;color:var(--ink);margin-top:2px;">Saturday, 14th November 2026</p>
+    <div class="countdown-grid">
+      <div class="countdown-box"><div class="cd-num" id="cdDays">00</div><div class="cd-label">DAYS</div></div>
+      <div class="countdown-box"><div class="cd-num" id="cdHours">00</div><div class="cd-label">HOURS</div></div>
+      <div class="countdown-box"><div class="cd-num" id="cdMins">00</div><div class="cd-label">MINS</div></div>
+      <div class="countdown-box"><div class="cd-num" id="cdSecs">00</div><div class="cd-label">SECS</div></div>
+    </div>
+  </section>
+
+  <section class="royal-card animate-reveal">
+    <p class="cz" style="font-size:8.5px;color:var(--gold);">DATE &amp; LOCATION</p>
+    <h2 class="sc gold-foil" style="font-size:46px;margin:4px 0 8px;">Walima Ceremony</h2>
+    <p style="font-size:15px;color:var(--rose);font-weight:600;">7:30 PM Onwards</p>
+    <div style="width:40px;height:1px;background:#f0ccd5;margin:16px auto;"></div>
+    <p class="cz" style="font-size:8px;color:#6b5558;">THE VENUE</p>
+    <p style="font-size:14.5px;color:var(--ink);margin-top:4px;line-height:1.7;">
+      <strong>Karachi Pakistan</strong><br>
+     <br>
+     
+    </p>
+    <div style="display:flex;justify-content:center;gap:12px;margin-top:22px;flex-wrap:wrap;">
+      <a class="bt-luxury" href="https://maps.app.goo.gl/2koUbn5tcRmCg4ZW6" target="_blank" rel="noopener">VIEW ON MAP</a>
+      <button class="bt-luxury bt-secondary" id="addToCalBtn" type="button">ADD TO CALENDAR</button>
+    </div>
+  </section>
+
+  <section class="royal-card animate-reveal">
+    <p class="cz" style="font-size:8.5px;color:var(--rose);">THE DETAILS</p>
+    <h2 class="sc gold-foil" style="font-size:46px;margin-bottom:4px;">Our Timeline</h2>
+    <p class="cz" style="font-size:8px;color:#6b5558;margin-bottom:18px;">SATURDAY, 14TH NOVEMBER 2026</p>
+    <div class="timeline-list">
+      <div class="tl-item"><div class="tl-badge"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 22h8M12 15v7M5 3l7 8 7-8H5Z"/></svg></div><div><p class="tl-time">7:30 PM</p><p class="tl-title">Meet &amp; Greet / Welcome Refreshments</p></div></div>
+      <div class="tl-item"><div class="tl-badge"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg></div><div><p class="tl-time">8:30 PM</p><p class="tl-title">Arrival of Atif &amp; Noreen</p></div></div>
+      <div class="tl-item"><div class="tl-badge"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 18h16M7 14c0-3 3-5 5-5s5 2 5 5H7ZM12 9V5"/></svg></div><div><p class="tl-time">9:15 PM</p><p class="tl-title">Walima Banquet Dinner</p></div></div>
+      <div class="tl-item"><div class="tl-badge"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.3"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div><p class="tl-time">10:30 PM</p><p class="tl-title">Photography &amp; Blessings</p></div></div>
+    </div>
+  </section>
+
+  <section class="royal-card animate-reveal">
+    <p class="cz" style="font-size:8.5px;color:var(--gold);">DRESS CODE</p>
+    <p class="sr" style="font-size:25px;font-style:italic;color:var(--ink);margin-top:2px;">Traditional &amp; Festive Formal</p>
+    <p style="font-size:13px;color:#6b5558;max-width:320px;margin:8px auto 0;">Graceful shades of Cream, Blush Rose, Gold, and Emerald accents are warmly invited.</p>
+    <div class="swatch-row">
+      <div class="palette-dot" style="background:#fbf5ec;border:1px solid #b8892f;" title="Cream"></div>
+      <div class="palette-dot" style="background:#f4d4da;" title="Blush"></div>
+      <div class="palette-dot" style="background:#9c3f58;" title="Rose"></div>
+      <div class="palette-dot" style="background:#e2c36f;" title="Gold"></div>
+      <div class="palette-dot" style="background:#2f5d46;" title="Green"></div>
+    </div>
+  </section>
+
+  <section class="royal-card animate-reveal">
+    <p class="cz" style="font-size:8.5px;color:var(--rose);">KINDLY RESPOND</p>
+    <h2 class="sc gold-foil" style="font-size:50px;margin:4px 0 10px;">Rsvp</h2>
+    <p class="sr" style="font-size:18px;line-height:1.7;color:var(--ink);">We’d love for you to be part of our celebration!<br>Please confirm your presence below:</p>
+    <div class="rsvp-card-box">
+      <div class="rsvp-form-row"><label class="rsvp-form-label" for="rsvpGuestName">YOUR FULL NAME</label><input type="text" id="rsvpGuestName" class="rsvp-form-input" placeholder="e.g. Mr. &amp; Mrs. Tariq Khan"></div>
+      <div class="rsvp-form-row"><label class="rsvp-form-label" for="rsvpAttendance">ATTENDANCE</label>
+        <select id="rsvpAttendance" class="rsvp-form-select"><option value="Joyfully Attending">Joyfully Attending with Family</option><option value="Regretfully Decline">Regretfully Decline (Sending Prayers)</option></select></div>
+      <div class="rsvp-form-row"><label class="rsvp-form-label" for="rsvpGuestCount">TOTAL GUESTS</label>
+        <select id="rsvpGuestCount" class="rsvp-form-select"><option value="1">1 Person</option><option value="2" selected>2 Persons</option><option value="3">3 Persons</option><option value="4+">Family (4+ Persons)</option></select></div>
+      <div class="rsvp-form-row"><label class="rsvp-form-label" for="rsvpHostSelect">SEND RSVP TO</label>
+        <select id="rsvpHostSelect" class="rsvp-form-select"><option value="9667966898">Dr. Eman Anwar (+92301234567)</option><option value="+92301234567">Rizwan (+92301234567)</option></select></div>
+      <button class="bt-luxury" id="sendWhatsAppRsvpBtn" type="button" style="width:100%;margin-top:8px;">PLEASE RSVP HERE VIA WHATSAPP</button>
+    </div>
+    <div style="margin-top:24px;font-size:12.5px;color:#6b5558;line-height:1.9;">
+      For any questions, please contact us directly at:<br>
+      <strong>Dr. Eman Anwar:</strong> <a href="tel:+92301234567" style="color:var(--green);font-weight:600;text-decoration:none;">+92301234567</a><br>
+      <strong>Rizwan:</strong> <a href="tel:+92301234567" style="color:var(--green);font-weight:600;text-decoration:none;">+92301234567</a>
+    </div>
+  </section>
+
+  <footer style="margin-top:10px;padding:20px 10px;">
+    <p class="cz" style="font-size:8.5px;color:#6b5558;">WITH LOVE</p>
+    <p class="sc gold-foil" style="font-size:42px;margin:6px 0;">Atif &amp; Noreen</p>
+    <p style="font-size:12px;color:#6b5558;">We look forward to celebrating with you.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const openScreen=document.getElementById('open'),envTrigger=document.getElementById('envTrigger');
+  let opened=false;
+  function executeOpen(){
+    if(opened)return;opened=true;
+    openScreen.classList.add('opening');
+    setTimeout(()=>{openScreen.classList.add('unfolded');document.body.classList.remove('lock');document.body.classList.add('revealed');spawnCelebrationBurst();},1050);
+  }
+  envTrigger.addEventListener('click',executeOpen);
+  envTrigger.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();executeOpen();}});
+
+  // Seal: centre the real ink of "A & N" inside the stamp and shrink it to fit
+  function fitSeal(){
+    const t=document.getElementById('sealTxt');if(!t)return;
+    try{
+      const c=document.createElement('canvas').getContext('2d'),str='A & N';
+      c.font='19px "Pinyon Script"';
+      let m=c.measureText(str),w=m.actualBoundingBoxLeft+m.actualBoundingBoxRight,h=m.actualBoundingBoxAscent+m.actualBoundingBoxDescent;
+      const k=Math.min(1,36/w,28/h),size=19*k;
+      m=(c.font=size+'px "Pinyon Script"',c.measureText(str));
+      const L=m.actualBoundingBoxLeft,R=m.actualBoundingBoxRight,A=m.actualBoundingBoxAscent,D=m.actualBoundingBoxDescent;
+      t.setAttribute('font-size',size);
+      t.setAttribute('x',(34-(R-L)/2).toFixed(2));
+      t.setAttribute('y',(34+(A-D)/2).toFixed(2));
+    }catch(e){}
+  }
+  (document.fonts&&document.fonts.load?document.fonts.load('19px "Pinyon Script"','A & N').then(fitSeal,fitSeal):Promise.resolve().then(fitSeal));
+
+  // Canvas particles
+  const canvas=document.getElementById('fx-canvas'),ctx=canvas.getContext('2d');
+  let width,height,particles=[];
+  function resizeCanvas(){width=canvas.width=innerWidth;height=canvas.height=innerHeight;}
+  addEventListener('resize',resizeCanvas);resizeCanvas();
+  class Particle{
+    constructor(){this.reset();}
+    reset(){this.x=Math.random()*width;this.y=-20;this.size=Math.random()*4.5+2.5;this.speedY=Math.random()*.75+.35;this.speedX=Math.sin(Math.random()*6.28)*.6;this.rotation=Math.random()*360;this.rotationSpeed=(Math.random()-.5)*1.6;this.isPetal=Math.random()>.55;this.opacity=Math.random()*.5+.35;this.burst=false;this.dead=false;}
+    update(){
+      this.y+=this.speedY;this.x+=this.speedX;this.rotation+=this.rotationSpeed;
+      const out=this.y>height+20||this.y<-80||this.x<-80||this.x>width+80;
+      if(out){this.burst?this.dead=true:this.reset();}
+    }
+    draw(){
+      ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.rotation*Math.PI/180);ctx.globalAlpha=this.opacity;
+      if(this.isPetal){ctx.fillStyle='#f4d4da';ctx.beginPath();ctx.ellipse(0,0,this.size*1.5,this.size*.85,0,0,Math.PI*2);ctx.fill();}
+      else{ctx.fillStyle='#e2c36f';ctx.beginPath();ctx.arc(0,0,this.size*.5,0,Math.PI*2);ctx.fill();}
+      ctx.restore();
+    }
+  }
+  for(let i=0;i<28;i++)particles.push(new Particle());
+  function spawnCelebrationBurst(){
+    for(let i=0;i<40;i++){const p=new Particle();p.burst=true;p.y=innerHeight*.45+(Math.random()-.5)*120;p.x=innerWidth*.5+(Math.random()-.5)*120;p.speedY=(Math.random()-.5)*4.5;p.speedX=(Math.random()-.5)*4.5;particles.push(p);}
+  }
+  function loop(){
+    ctx.clearRect(0,0,width,height);
+    particles.forEach(p=>{p.update();p.draw();});
+    particles=particles.filter(p=>!p.dead);
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  // Live countdown (14 Nov 2026, 7:30 PM IST)
+  const target=new Date('2026-11-14T19:30:00+05:30').getTime();
+  const pad=n=>String(n).padStart(2,'0');
+  function tick(){
+    const d=target-Date.now();
+    if(d>0){
+      document.getElementById('cdDays').textContent=pad(Math.floor(d/864e5));
+      document.getElementById('cdHours').textContent=pad(Math.floor(d%864e5/36e5));
+      document.getElementById('cdMins').textContent=pad(Math.floor(d%36e5/6e4));
+      document.getElementById('cdSecs').textContent=pad(Math.floor(d%6e4/1e3));
+    }
+  }
+  setInterval(tick,1000);tick();
+
+  // Scroll reveal
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active');}),{threshold:.12});
+  document.querySelectorAll('.animate-reveal').forEach(el=>io.observe(el));
+
+  // Add to calendar (.ics)
+  document.getElementById('addToCalBtn').addEventListener('click',()=>{
+    const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Atif and Noreen//Walima//EN','BEGIN:VEVENT','UID:walima-20261114@atif-nahid','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z',
+      'SUMMARY:Walima Ceremony — Atif & Noreen','DESCRIPTION:Walima ceremony of Atif & Noreen at karachi pakistan.',
+      'LOCATION'
+      ,'DTSTART:20261114T140000Z','DTEND:20261114T180000Z','END:VEVENT','END:VCALENDAR'].join('\r\n');
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar;charset=utf-8'}));
+    a.download='Atif_Noreen_Walima.ics';document.body.appendChild(a);a.click();document.body.removeChild(a);
+  });
+
+  // WhatsApp RSVP
+  const nameEl=document.getElementById('rsvpGuestName');
+  document.getElementById('sendWhatsAppRsvpBtn').addEventListener('click',()=>{
+    const name=nameEl.value.trim();
+    if(!name){nameEl.classList.add('need');nameEl.focus();return;}
+    nameEl.classList.remove('need');
+    const attendance=document.getElementById('rsvpAttendance').value;
+    const guests=document.getElementById('rsvpGuestCount').value;
+    const phone=document.getElementById('rsvpHostSelect').value;
+    const yes=attendance==='Joyfully Attending';
+    const event='the Walima Ceremony of *Atif & Noreen* (14th Nov 2026 at karachi pakistan)';
+    const msg=encodeURIComponent(
+      'Assalam-o-Alaikum,\n\n'+(yes?'I am pleased to confirm our RSVP for ':'With regret, I am unable to attend ')+event+'.\n\n'+
+      '• Guest Name: '+name+'\n• Attendance: '+attendance+'\n'+(yes?'• Total Guests: '+guests+'\n':'')+
+      '\nHeartfelt congratulations to Kazim Ali sahab, Nawaz Chauhan sahab, and both families!');
+    window.open('https://wa.me/91'+phone+'?text='+msg,'_blank');
+  });
+  nameEl.addEventListener('input',()=>nameEl.classList.remove('need'));
+})();
+</script>
+</body>
+</html>
