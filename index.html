@@ -10,57 +10,76 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 :root{
+  --ivory:#fffaf5;
   --cream:#fbf5ec;
-  --ivory:#fffdf9;
-  --blush:#f4d4da;
+  --pearl:#f9f3eb;
   --rose:#9c3f58;
+  --rose-soft:#f2d8df;
   --gold:#b8892f;
-  --gold-soft:#d9b66b;
-  --gold2:#e2c36f;
+  --gold-soft:#d7b677;
+  --gold-deep:#8a6516;
   --green:#2f5d46;
-  --green-deep:#1c3f2e;
-  --ink:#3b2a2e;
-  --muted:#6b5558;
-  --line:rgba(184,137,47,.32);
-  --card-shadow:0 20px 40px -22px rgba(110,66,74,.28),0 8px 25px rgba(90,56,63,.08);
+  --green-deep:#1d3d2d;
+  --ink:#382a2a;
+  --muted:#68565a;
+  --line:rgba(184,137,47,.38);
+  --shadow:0 28px 55px -28px rgba(94,49,59,.26),0 10px 30px rgba(74,45,59,.09);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{min-height:100%;background:linear-gradient(180deg,#f6ecdf 0%,#f3e6de 35%,#f9f4ee 100%);scroll-behavior:smooth}
-body{background:radial-gradient(circle at 50% 0,#fffdf8 0%,#fbf5ec 33%,#f7ece5 100%);color:var(--ink);font:300 13.5px/1.8 'Jost',sans-serif;text-align:center;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;position:relative}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;background:
-  radial-gradient(circle at top left, rgba(255,255,255,.7), transparent 28%),
-  radial-gradient(circle at bottom right, rgba(219,181,123,.18), transparent 35%);
-  z-index:0}
+html{min-height:100%;background:linear-gradient(180deg,#f5eee3 0%,#f3e9e1 30%,#faf3ec 100%);scroll-behavior:smooth}
+body{
+  position:relative;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,.8), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(201,163,87,.12), transparent 35%),
+    linear-gradient(180deg,#f7f0e9 0%,#f5eae3 32%,#faf5f1 100%);
+  color:var(--ink);
+  font:300 13.5px/1.8 'Jost',sans-serif;
+  text-align:center;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 12%, rgba(255,255,255,.85), transparent 16%),
+    radial-gradient(circle at 80% 5%, rgba(216,193,126,.18), transparent 18%),
+    radial-gradient(circle at 60% 90%, rgba(184,137,47,.08), transparent 26%);
+  z-index:0;
+}
 body.lock{overflow:hidden;height:100dvh}
 .paper-grain{position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0.14'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");background-size:240px}
-#fx-canvas{position:fixed;inset:0;pointer-events:none;z-index:2;opacity:.9}
+#fx-canvas{position:fixed;inset:0;pointer-events:none;z-index:2;opacity:.86}
 .sc{font-family:'Pinyon Script',cursive;font-weight:400}
 .sr{font-family:'Cormorant Garamond',serif}
 .cz{font-family:'Cinzel',serif;letter-spacing:.24em;text-transform:uppercase}
 .gold-foil{background:linear-gradient(135deg,#9d6f1a 0%,#d4a034 25%,#845507 50%,#c9932a 75%,#9d6f1a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:shineFoil 8s linear infinite}
 @keyframes shineFoil{0%{background-position:0% center}100%{background-position:220% center}}
 
-/* 1. OPENING SCENE */
-#open{position:fixed;inset:0;z-index:300;background:radial-gradient(circle at 50% 40%,#fffdf8 0%,#fbf5ec 32%,#f6e0e0 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease}
+#open{position:fixed;inset:0;z-index:300;background:radial-gradient(circle at 50% 32%,#fffdf9 0%,#fbf5ec 34%,#f5dfe1 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease}
 #open.unfolded{opacity:0;visibility:hidden;pointer-events:none}
-.bismillah-title{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);letter-spacing:.08em;margin-bottom:12px;opacity:0;animation:fadeUp 1.2s .2s forwards}
-#open .pre-title{font:500 9.5px 'Jost',sans-serif;letter-spacing:.36em;color:var(--muted);text-transform:uppercase;margin-bottom:40px;opacity:0;animation:fadeUp 1.2s .4s forwards}
-#open h1{font-size:clamp(42px,12vw,70px);color:var(--ink);line-height:1.15;margin:0 0 64px;opacity:0;filter:blur(8px);animation:blurIn 1.7s .6s forwards;letter-spacing:.02em}
+.bismillah-title{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--gold);letter-spacing:.08em;margin-bottom:12px;opacity:0;animation:fadeUp 1.2s .2s forwards}
+#open .pre-title{font:600 9px 'Jost',sans-serif;letter-spacing:.38em;color:var(--muted);text-transform:uppercase;margin-bottom:42px;opacity:0;animation:fadeUp 1.2s .4s forwards}
+#open h1{font-size:clamp(42px,12vw,72px);color:var(--ink);line-height:1.15;margin:0 0 64px;opacity:0;filter:blur(8px);animation:blurIn 1.7s .6s forwards;letter-spacing:.02em}
 #open h1 .amp{font-size:.85em;margin:0 10px;color:var(--gold)}
-#open .click-hint{margin-top:36px;font:600 9px 'Jost',sans-serif;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;opacity:0;animation:fadeUp 1.2s 2s forwards,pulseHint 2.2s 2.8s infinite}
+#open .click-hint{margin-top:38px;font:700 9px 'Jost',sans-serif;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;opacity:0;animation:fadeUp 1.2s 2s forwards,pulseHint 2.2s 2.8s infinite}
 @keyframes pulseHint{0%,100%{transform:translateY(0);opacity:.8}50%{transform:translateY(-4px);opacity:1}}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 @keyframes blurIn{to{opacity:1;filter:none}}
 
-.envelope-box{perspective:1200px;width:min(80vw,330px);aspect-ratio:1.42;flex-shrink:0;cursor:pointer;opacity:0;animation:envDrop 1.45s 1s cubic-bezier(.16,1,.3,1) forwards;transform-origin:center bottom}
+.envelope-box{perspective:1200px;width:min(80vw,330px);aspect-ratio:1.42;flex-shrink:0;cursor:pointer;opacity:0;animation:envDrop 1.45s 1s cubic-bezier(.16,1,.3,1) forwards;transform-origin:center center}
 .envelope-box:focus-visible{outline:2px solid var(--gold);outline-offset:8px}
 @keyframes envDrop{from{opacity:0;transform:translateY(60px) rotateX(15deg) rotateZ(-3deg)}to{opacity:1;transform:translateY(0) rotateX(0) rotateZ(-1.5deg)}}
-.env-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 24px 30px rgba(120,60,70,.24))}
+.env-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 26px 34px rgba(120,60,70,.25))}
 .envelope-box:hover .env-inner{transform:translateY(-8px) rotateX(6deg)}
-.eb{position:absolute;inset:0;background:linear-gradient(180deg,#f1c6d0,#e8aab8 100%);border-radius:8px;border:1px solid rgba(123,86,95,.18)}
+.eb{position:absolute;inset:0;background:linear-gradient(180deg,#f7d7df,#ecb0c1 100%);border-radius:8px;border:1px solid rgba(123,86,95,.18)}
 .el{position:absolute;left:4%;right:4%;top:3%;bottom:6%;background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.15)),var(--cream) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%23b8892f' stroke-width='0.5' stroke-linecap='round'%3E%3Cpath d='M6 6h8M6 10h8M6 14h8'/%3E%3C/svg%3E");background-size:18px 18px;background-position:0 0;border-radius:3px;opacity:0;transition:opacity .45s}
-.ef{position:absolute;inset:0;background:linear-gradient(180deg,#f3d0d7,#efb7c5 100%);clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);border-radius:0 0 5px 5px;z-index:4}
-.fp{position:absolute;left:0;top:0;width:100%;height:60%;background:linear-gradient(180deg,#efbed0,#e3a5b6 100%);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform 1s cubic-bezier(.4,0,.1,1),background .8s ease;z-index:3}
+.ef{position:absolute;inset:0;background:linear-gradient(180deg,#f7dfe5,#f1c4cf 100%);clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);border-radius:0 0 5px 5px;z-index:4}
+.fp{position:absolute;left:0;top:0;width:100%;height:60%;background:linear-gradient(180deg,#f2c0d0,#e4a8b9 100%);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform 1s cubic-bezier(.4,0,.1,1),background .8s ease;z-index:3}
 .seal{position:absolute;left:50%;top:58%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffea9f,var(--gold) 72%,#7d540f 100%);border:1px solid rgba(74,54,18,.7);box-shadow:inset 0 2px 4px rgba(255,255,255,.45),0 5px 12px rgba(125,84,15,.35);z-index:5;animation:sealPulse 2s ease-in-out infinite}
 .seal svg{display:block;width:100%;height:100%}
 @keyframes sealPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
@@ -70,16 +89,44 @@ body.lock{overflow:hidden;height:100dvh}
 #open.opening .seal{transform:scale(2.2);opacity:0;animation:none}
 #open.opening .bismillah-title,#open.opening .pre-title,#open.opening h1,#open.opening .click-hint{opacity:0!important;transition:opacity .5s ease}
 
-/* 2. MAIN SUITE */
 .invitation-suite{max-width:500px;margin:0 auto;padding:calc(28px + env(safe-area-inset-top,0px)) 18px calc(60px + env(safe-area-inset-bottom,0px));opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,1,.3,1),transform .8s cubic-bezier(.2,1,.3,1);position:relative;z-index:1}
 .revealed .invitation-suite{opacity:1;transform:translateY(0)}
 
-.royal-card{background:linear-gradient(180deg,#fffdfb 0%,#fffaf6 100%);border:1px solid var(--line);border-radius:22px;padding:38px 26px;margin-bottom:28px;position:relative;box-shadow:var(--card-shadow);overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
-.royal-card::before{content:"";position:absolute;inset:8px;border:1px dashed rgba(226,195,111,.5);border-radius:16px;pointer-events:none}
-.royal-card::after{content:"";position:absolute;inset:auto 12% 0 12%;height:1px;background:linear-gradient(90deg,transparent,rgba(184,137,47,.8),transparent);opacity:.7}
-.royal-card:hover{transform:translateY(-2px);box-shadow:0 22px 40px -24px rgba(110,66,74,.28),0 10px 30px rgba(90,56,63,.12)}
+.royal-card{
+  position:relative;
+  background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,249,245,.75));
+  border:1px solid rgba(184,137,47,.42);
+  border-radius:26px;
+  padding:38px 26px;
+  margin-bottom:28px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  backdrop-filter:blur(2px);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.royal-card::before{
+  content:"";
+  position:absolute;
+  inset:10px;border:1px solid rgba(226,195,111,.5);
+  border-radius:18px;
+  pointer-events:none;
+}
+.royal-card::after{
+  content:"";
+  position:absolute;
+  left:12%; right:12%; bottom:16px; height:1px;
+  background:linear-gradient(90deg,transparent,rgba(184,137,47,.8),transparent)
+}
+.royal-card:hover{transform:translateY(-2px);box-shadow:0 34px 60px -30px rgba(110,66,74,.28),0 12px 30px rgba(90,56,63,.1)}
 
-.card-badge{display:inline-block;padding:7px 14px;border:1px solid rgba(184,137,47,.45);border-radius:999px;background:rgba(251,245,236,.8);font:600 8px 'Jost',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.card-badge{display:inline-block;padding:7px 14px;border:1px solid rgba(184,137,47,.45);border-radius:999px;background:rgba(251,245,236,.85);font:600 8px 'Jost',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.ornament{position:relative;display:flex;align-items:center;justify-content:center;margin:14px auto 6px;width:100%;max-width:180px;height:18px}
+.ornament::before,.ornament::after{content:"";position:absolute;top:50%;width:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(184,137,47,.8),transparent)}
+.ornament::before{left:0;transform:translateY(-50%)}
+.ornament::after{right:0;transform:translateY(-50%)}
+.ornament span{display:block;width:20px;height:20px;border:1px solid rgba(184,137,47,.7);border-radius:50%;background:radial-gradient(circle at 35% 35%,#fef3d0,rgba(216,182,100,.7) 60%,rgba(184,137,47,.9) 100%);position:relative;box-shadow:inset 0 2px 6px rgba(255,255,255,.5)}
+.ornament span::before,.ornament span::after{content:"";position:absolute;inset:5px;border:1px solid rgba(184,137,47,.5);border-radius:50%}
+
 .quran-verse{font-family:'Cormorant Garamond',serif;font-size:20px;line-height:1.75;color:var(--ink);margin:18px 0 10px;letter-spacing:.2px;position:relative;z-index:1}
 .quran-ref{font:600 8.5px 'Jost',sans-serif;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;position:relative;z-index:1}
 
@@ -96,7 +143,7 @@ body.lock{overflow:hidden;height:100dvh}
 .timeline-list{margin:22px 0 0;text-align:left;padding:0;position:relative;z-index:1}
 .tl-item{display:flex;align-items:flex-start;gap:18px;margin-bottom:22px;position:relative}
 .tl-item:not(:last-child)::after{content:"";position:absolute;left:22px;top:48px;bottom:-22px;width:1.5px;background:linear-gradient(to bottom,rgba(240,204,213,.8),rgba(240,204,213,.15));}
-.tl-badge{width:46px;height:46px;border-radius:50%;background:linear-gradient(180deg,#fff,rgba(244,212,218,.35));border:1.5px solid rgba(226,195,111,.8);display:grid;place-items:center;color:var(--rose);flex-shrink:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+.tl-badge{width:46px;height:46px;border-radius:50%;background:linear-gradient(180deg,#fff,rgba(244,212,218,.42));border:1.5px solid rgba(226,195,111,.8);display:grid;place-items:center;color:var(--rose);flex-shrink:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
 .tl-time{font:700 10px 'Jost',sans-serif;letter-spacing:.12em;color:var(--rose);text-transform:uppercase;margin-bottom:2px}
 .tl-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--ink);line-height:1.25;font-weight:600}
 
@@ -181,7 +228,8 @@ footer p:last-child{font-size:12px;color:var(--muted);letter-spacing:.05em}
 
   <section class="royal-card animate-reveal">
     <div class="card-badge">Bismillah</div>
-    <svg viewBox="0 0 100 100" width="56" height="56" style="color:var(--gold);display:block;margin:14px auto 10px;">
+    <div class="ornament"><span></span></div>
+    <svg viewBox="0 0 100 100" width="56" height="56" style="color:var(--gold);display:block;margin:10px auto 12px;">
       <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3,3"/>
       <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="0.8"/>
       <path d="M36 50 Q 50 34 64 50 Q 50 66 36 50 Z" fill="none" stroke="currentColor" stroke-width="1"/>
@@ -194,6 +242,7 @@ footer p:last-child{font-size:12px;color:var(--muted);letter-spacing:.05em}
 
   <section class="royal-card animate-reveal">
     <div class="card-badge">Auspicious Blessings</div>
+    <div class="ornament"><span></span></div>
     <p style="font-size:14.5px;color:var(--ink);margin:18px 0 10px;line-height:1.8;letter-spacing:.25px;">
       <strong>Mr. Kazim Ali</strong> &amp; <strong>Mrs. Robina Khan</strong><br>
       <span style="font-weight:400">request the pleasure of your company to celebrate the Walima Ceremony of their beloved son</span>
@@ -213,6 +262,7 @@ footer p:last-child{font-size:12px;color:var(--muted);letter-spacing:.05em}
 
   <section class="royal-card animate-reveal">
     <div class="card-badge">Countdown</div>
+    <div class="ornament"><span></span></div>
     <p class="sr" style="font-size:24px;font-weight:600;color:var(--ink);margin-top:18px;margin-bottom:4px;">Saturday, 14th November 2026</p>
     <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">7:30 PM Onwards</p>
     <div class="countdown-grid">
@@ -225,6 +275,7 @@ footer p:last-child{font-size:12px;color:var(--muted);letter-spacing:.05em}
 
   <section class="royal-card animate-reveal">
     <div class="card-badge">Venue</div>
+    <div class="ornament"><span></span></div>
     <h2 class="sc gold-foil" style="font-size:48px;margin:18px 0 10px;letter-spacing:.02em;">Walima Ceremony</h2>
     <div style="width:44px;height:1px;background:#f0ccd5;margin:16px auto;"></div>
     <p class="cz" style="font-size:8px;color:var(--muted);margin:14px 0 6px;">THE VENUE</p>
@@ -239,6 +290,7 @@ footer p:last-child{font-size:12px;color:var(--muted);letter-spacing:.05em}
 
   <section class="royal-card animate-reveal">
     <div class="card-badge">Our Timeline</div>
+    <div class="ornament"><span></span></div>
     <h2 class="sc gold-foil" style="font-size:48px;margin:18px 0 8px;letter-spacing:.02em;">Our Timeline</h2>
     <p class="cz" style="font-size:8px;color:var(--muted);margin-bottom:20px;">SATURDAY, 14TH NOVEMBER 2026</p>
     <div class="timeline-list">
@@ -275,6 +327,7 @@ footer p:last-child{font-size:12px;color:var(--muted);letter-spacing:.05em}
 
   <section class="royal-card animate-reveal">
     <div class="card-badge">Dress Code</div>
+    <div class="ornament"><span></span></div>
     <p class="sr" style="font-size:26px;font-style:italic;color:var(--ink);margin:18px 0 10px;">Traditional &amp; Festive Formal</p>
     <p style="font-size:13.5px;color:var(--muted);max-width:360px;margin:0 auto 16px;line-height:1.7;letter-spacing:.2px;">Graceful shades of Cream, Blush Rose, Gold, and Emerald accents are warmly invited.</p>
     <div class="swatch-row">
@@ -288,6 +341,7 @@ footer p:last-child{font-size:12px;color:var(--muted);letter-spacing:.05em}
 
   <section class="royal-card animate-reveal">
     <div class="card-badge">RSVP</div>
+    <div class="ornament"><span></span></div>
     <h2 class="sc gold-foil" style="font-size:52px;margin:18px 0 10px;letter-spacing:.02em;">RSVP</h2>
     <p class="sr" style="font-size:18px;line-height:1.7;color:var(--ink);margin-bottom:16px;letter-spacing:.2px;">We'd love for you to be part of our celebration!<br><span style="font-size:15px">Please confirm your presence below:</span></p>
     <div class="rsvp-card-box">
@@ -328,6 +382,7 @@ footer p:last-child{font-size:12px;color:var(--muted);letter-spacing:.05em}
   </section>
 
   <footer>
+    <div class="ornament"><span></span></div>
     <p class="cz" style="font-size:8.5px;color:var(--muted);letter-spacing:.15em;">WITH LOVE</p>
     <p class="sc gold-foil" style="margin:8px 0;">Atif &amp; Noreen</p>
     <p>We look forward to celebrating with you.</p>
